@@ -1,10 +1,10 @@
 export default function cleanSet(set, startString) {
-  let result = [];
+  const result = [];
   const stringLen = startString.length;
   set.forEach((element) => {
-    if (element.substring(0, stringLen) === startString && startString) {
+    if (startString && element.substring(0, stringLen) === startString) {
       result.push(element.substring(stringLen));
     }
   });
-  return result.join("-");
+  return result.join('-');
 }
