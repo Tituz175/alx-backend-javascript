@@ -19,7 +19,7 @@ console.log(teacher3);
 
 interface Directors extends Teacher {
     numberOfReports: number
-}
+};
 
 const director1: Directors = {
     firstName: 'John',
@@ -30,3 +30,11 @@ const director1: Directors = {
 };
 
 console.log(director1);
+
+interface IprintTeacher{
+    (firstName:string, lastName:string):string;
+};
+
+const printTeacher:IprintTeacher = (firstName, lastName) =>{
+    return `${firstName[0]}. ${lastName}`;
+};
