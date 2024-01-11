@@ -38,3 +38,35 @@ interface IprintTeacher{
 const printTeacher:IprintTeacher = (firstName, lastName) =>{
     return `${firstName[0]}. ${lastName}`;
 };
+
+interface IStudentClass {
+
+    firstName: string;
+    lastName: string;
+    
+    workOnHomework(): string;
+    displayName(): string;
+    
+    }
+
+class StudentClass implements IStudentClass{
+    firstName: string;
+    lastName: string;
+
+    constructor(firstName:string, lastName:string){
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    workOnHomework(): string {
+        return 'Currently working';
+    }
+
+    displayName(): string {
+        return this.firstName;
+    }
+}
+
+const  student1 = new StudentClass("Praise", "Oyekanmi");
+console.log(student1.workOnHomework())
+console.log(student1.displayName())
