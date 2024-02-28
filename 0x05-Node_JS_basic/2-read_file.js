@@ -2,8 +2,7 @@ const fs = require('fs');
 
 const countStudents = (fileName) => {
   let totalStudent = -1;
-  const cs = [];
-  const swe = [];
+  const student = {};
   try {
     const file = fs.readFileSync(fileName, 'utf-8').toString();
     const lines = file.split('\n');
@@ -14,18 +13,14 @@ const countStudents = (fileName) => {
       const itemDetails = item.split(',');
       const itemField = itemDetails[3];
       const itemName = itemDetails[0];
-      if (itemField === 'CS') {
-        cs.push(itemName);
-      } else if (itemField === 'SWE') {
-        swe.push(itemName);
-      }
+      // eslint-disable-next-line no-unused-expressions
+      student[itemField] ? student[itemField].push(itemName) : student[itemField] = [itemName];
     });
     console.log(`Number of students: ${totalStudent}`);
-    if (cs) {
-      console.log(`Number of students in CS: ${cs.length}. List: ${cs.join(', ')}`);
-    }
-    if (swe) {
-      console.log(`Number of students in SWE: ${swe.length} List: ${swe.join(', ')}`);
+    for (const element in student) {
+      if (element !== 'field') {
+        console.log(`Number of students in ${element}: ${student[element].length}. List: ${student[element].join(', ')}`);
+      }
     }
   } catch (error) {
     throw Error('Cannot load the database');
